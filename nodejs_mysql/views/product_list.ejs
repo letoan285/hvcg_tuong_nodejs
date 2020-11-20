@@ -1,0 +1,14 @@
+
+<%- include("./partials/header.ejs") %>
+<h2>Product List</h2>
+<div>
+    <% products.forEach(element => { %>
+        
+        <li class="item">
+            <%- element.id %> - <%- element.name %>
+        </li>
+        <% })  %>
+</div>
+<button class="btn btn-success">Add New</button>
+    
+<%- include("./partials/footer.ejs") %>

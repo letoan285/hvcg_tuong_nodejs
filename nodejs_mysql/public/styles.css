@@ -1,0 +1,22 @@
+.item {
+    color: coral;
+   padding: 10px;
+   border-bottom: 1px solid grey;
+}
+.header {
+   background-color: grey;
+
+}
+.header .nav ul{
+    display: inline-flex;
+    float: left;
+    /* margin-right: 10px; */
+    width: 100%;
+    list-style-type: none;
+}
+.header .nav ul li{
+    margin-right: 10px;
+}
+.header .nav ul li a {
+   color: white;
+}
