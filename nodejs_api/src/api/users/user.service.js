@@ -25,4 +25,12 @@ module.exports = {
             return callback(null, result);
         });
     },
+    getUserByEmail: (email, callback) => {
+        pool.query(`SELECT * FROM users WHERE email = ?`, [email], (error, results) => {
+            if(error){
+                return callback(error);
+            }
+            return callback(null, results[0]);
+        });
+    }
 }

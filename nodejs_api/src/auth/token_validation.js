@@ -5,7 +5,7 @@ module.exports = {
         if(token){
             const headerToken = token.split(' ');
             token = headerToken[1];
-            verify(token, 'secret_key', (error, decoded) => {
+            verify(token, 'secret_token', (error, decoded) => {
                 if(error){
                     res.json({
                         succes: 0,

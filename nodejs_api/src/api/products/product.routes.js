@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { getProducts, getOne, createOne, update, deleteOne } = require('./product.controller');
+const { checkToken } = require('../../auth/token_validation');
 
-router.get('/', getProducts); // finished
+router.get('/', checkToken, getProducts); // finished
 
 router.get('/:id', getOne);
 
