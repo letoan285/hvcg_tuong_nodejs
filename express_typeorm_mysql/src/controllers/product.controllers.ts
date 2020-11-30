@@ -15,6 +15,14 @@ class ProductController {
         return res.json({ message: 'success', product: result });
 
     }
+
+    updateOne = async (req: Request, res: Response) => {
+        const result = await Product.findOne(req.params.id);
+        const product = await Product.merge(result, req.body);
+        const rs = await product.save();
+        return res.json({ message: 'success', product: rs });
+        
+    }
     createOne = (req: Request, res: Response) => {
         const product = new Product();
         product.category_id = 1;

@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 
 import userController from '../controllers/user.controllers';
+import authController from '../auth/auth.controllers';
 
 
 class UserRoute {
@@ -9,9 +10,11 @@ class UserRoute {
        this.config();
     }
     public config(){
-        this.router.get('/', userController.getAll);
-        // this.router.get('/:id', userController.getOne);
-        // this.router.post('/create', userController.createOne);
+        this.router.get('/', authController.checkToken, userController.getAll);
+        this.router.get('/:id', userController.getOne);
+        this.router.post('/create', userController.create);
+        this.router.post('/register', userController.register);
+        this.router.post('/login', userController.login);
         // this.router.get('/');
     }
 }

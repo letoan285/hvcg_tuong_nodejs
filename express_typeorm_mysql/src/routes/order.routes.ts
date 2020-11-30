@@ -3,7 +3,7 @@ import express, { Router } from 'express';
 import productController from '../controllers/product.controllers';
 
 
-class ProductRoute {
+class OrderRoute {
     public router: Router = Router();
     constructor(){
        this.config();
@@ -16,4 +16,4 @@ class ProductRoute {
         // this.router.get('/');
     }
 }
-export default new ProductRoute().router;
+export default new OrderRoute().router;

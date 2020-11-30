@@ -1,4 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import bcrypt from 'bcryptjs';
 
 @Entity('users')
 export class User {
@@ -7,12 +8,14 @@ export class User {
     id: number;
 
     @Column()
-    firstName: string;
+    username: string;
 
     @Column()
-    lastName: string;
+    email: string;
 
     @Column()
-    age: number;
+    password: string;
 
+    @Column()
+    status: number;
 }

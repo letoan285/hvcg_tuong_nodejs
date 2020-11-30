@@ -4,8 +4,11 @@ import cors from 'cors';
 import productRouter from './routes/product.routes';
 import express from 'express';
 import env from 'dotenv';
+import bodyParser from 'body-parser';
 import categoryRouter from "./routes/category.routes";
 import userRouter from './routes/user.routes';
+import homeRouter from './routes/home.routes';
+import orderRouter from './routes/order.routes';
 
 export class Server {
     public app: Application;
@@ -16,13 +19,18 @@ export class Server {
     }
     
     routes(): void {
-        this.app.use(cors());
+        this.app.use('/', homeRouter);
         this.app.use('/api/products', productRouter);
         this.app.use('/api/categories', categoryRouter);
         this.app.use('/api/users', userRouter);
+        this.app.use('/api/orders', orderRouter);
     }
     config(): void {
         env.config();
+        this.app.use(cors());
+        this.app.use(bodyParser.urlencoded({extended: false}));
+        this.app.use(express.json());
+
     }
 
     start(): void {
