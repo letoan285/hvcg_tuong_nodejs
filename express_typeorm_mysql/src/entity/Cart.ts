@@ -1,21 +1,18 @@
 import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
 
-@Entity('orders')
-export class Order {
+@Entity('carts')
+export class Cart {
 
     @PrimaryGeneratedColumn()
     id: number;
     
     @Column()
-    customer_id: number;
-
-    @Column()
     user_id: number;
 
     @Column()
-    total: number;
+    product_id: number;
 
-    @Column({nullable: true})
-    status: number;
+    @Column()
+    quantity: number;
 
 }

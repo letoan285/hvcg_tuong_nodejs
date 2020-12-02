@@ -5,11 +5,11 @@ import { Product } from '../entity/Product';
 class CategoryController {
     constructor() { }
     getAll = async (req: Request, res: Response) => {
-        const categories = await Category.find();
+        const categories = await Category.find({ relations: ["products"] });
         return res.status(201).json({ message: 'success', data: categories })
     }
     getOne = async (req: Request, res: Response) => {
-        const category = await Category.findOne(req.params.id);
+        const category = await Category.findOne(req.params.id, { relations: ["products"] });
         return res.status(200).json({ message: 'success get one!!!', data: category })
     }
 

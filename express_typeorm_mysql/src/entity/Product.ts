@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, ManyToOne} from "typeorm";
+import { Category } from "./Category";
 
 @Entity('products')
 export class Product  extends BaseEntity {
@@ -26,5 +27,8 @@ export class Product  extends BaseEntity {
 
     @Column({nullable: true})
     status: number;
+
+    @ManyToOne(() => Category, category => category.products)
+    category: Category;
 
 }

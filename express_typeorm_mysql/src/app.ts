@@ -9,6 +9,7 @@ import categoryRouter from "./routes/category.routes";
 import userRouter from './routes/user.routes';
 import homeRouter from './routes/home.routes';
 import orderRouter from './routes/order.routes';
+import cartRouter from './routes/cart.routes';
 
 export class Server {
     public app: Application;
@@ -24,6 +25,7 @@ export class Server {
         this.app.use('/api/categories', categoryRouter);
         this.app.use('/api/users', userRouter);
         this.app.use('/api/orders', orderRouter);
+        this.app.use('/api/carts', cartRouter);
     }
     config(): void {
         env.config();

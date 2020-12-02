@@ -48,9 +48,10 @@ class UserController {
             res.json({success: 0, message: 'Email and Password not empty !'});
         } else {
             const result = compareSync(password, user.password);
+          
             if(result){
                 user.password = undefined;
-                const jsontoken = sign({result: user.data}, 'secret_token', {expiresIn: '30d'});
+                const jsontoken = sign({userId: user.id}, 'secret_token', {expiresIn: '30d'});
                 return res.json({success: 1, message: 'Login successfully', token: jsontoken})
             } else {
                 return res.json({success: 0, message: 'Invalid Email or Password'})

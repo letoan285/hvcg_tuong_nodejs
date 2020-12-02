@@ -1,10 +1,24 @@
 import { Request, Response } from "express";
+import { Like } from "typeorm";
 import { Product } from '../entity/Product';
 
 class ProductController {
     getAll = async (req: Request, res: Response) => {
+        const query = req.query;
+        let products = [];
+        console.log(query.name);
+        
+       if(query.name || query.description){
+        products = await Product.find({ where : [{
+            name : Like(`%${query.name}%`),
+          }, {
+            description : Like(`%${query.description}%`),
+          }], relations: ["category"] });
+       } else {
+           products = await Product.find({ relations: ["category"] });
+       }
+        
 
-        const products = await Product.find();
 
         return res.json({ message: 'success', data: products });
     }

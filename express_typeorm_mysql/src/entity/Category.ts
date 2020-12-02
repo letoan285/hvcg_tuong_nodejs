@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany} from "typeorm";
+import { Product } from "./Product";
 interface ICategory {
     id?: number;
     name: string;
@@ -37,5 +38,8 @@ export class Category  extends BaseEntity {
 
     @Column({nullable: true})
     status: number;
+
+    @OneToMany(() => Product, product => product.category)
+    products: Product[];
 
 }
