@@ -17,6 +17,12 @@ export class Product  extends BaseEntity {
     price: number;
 
     @Column()
+    list_price: number;
+
+    @Column()
+    is_new: boolean;
+
+    @Column()
     category_id: number;
 
     @Column({nullable: true})

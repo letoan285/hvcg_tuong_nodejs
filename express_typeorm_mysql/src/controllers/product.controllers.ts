@@ -38,11 +38,16 @@ class ProductController {
         
     }
     createOne = (req: Request, res: Response) => {
+        const data = req.body;
         const product = new Product();
-        product.category_id = 1;
-        product.name = 'Samsung';
-        product.price = 1000;
-        product.description = 'this is samsung galax';
+        product.category_id = data.category_id;
+        product.name = data.name;
+        product.slug = data.slug;
+        product.image = data.image;
+        product.price = data.price;
+        product.is_new = data.is_new;
+        product.list_price = data.list_price;
+        product.description = data.description;
         product.save();
         return res.status(201).json({ message: 'success', product });
     }

@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
+import authController from '../auth/auth.controllers';
 
-import productController from '../controllers/product.controllers';
+import orderController from '../controllers/order.controllers';
 
 
 class OrderRoute {
@@ -9,10 +10,11 @@ class OrderRoute {
        this.config();
     }
     public config(){
-        this.router.get('/', productController.getAll);
-        this.router.get('/:id', productController.getOne);
-        this.router.post('/create', productController.createOne);
-        this.router.put('/:id', productController.updateOne);
+        this.router.get('/', orderController.getAll);
+        this.router.get('/:id', orderController.getOne);
+        this.router.post('/create',authController.checkToken, orderController.createOne);
+        this.router.post('/place-order',authController.checkToken, orderController.createOne);
+        this.router.put('/:id', orderController.updateOne);
         // this.router.get('/');
     }
 }

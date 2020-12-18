@@ -36,7 +36,7 @@ class UserController {
         const data = req.body;
         data.password = await bcrypt.hash(req.body.password, salt);
         const newUser = await getRepository(User).save(data);
-        res.json({data: newUser});
+        res.json({success: true, message: 'Register successfully', data: newUser});
 
     }
 
